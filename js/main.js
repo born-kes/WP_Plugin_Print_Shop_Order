@@ -25,7 +25,11 @@ const printShopOrder = function () {
 };
 const getDataToPrintByKES = function () {
 
+
     const r = jQuery;
+   if( r('#PrintBoxKes div').length > 0 ) {
+       return  window.print();
+   }
     const box_kes = r('#the-list');
     r('.check-column input', box_kes).each(function () {
         const id = r(this).val(); //*/
@@ -46,6 +50,7 @@ const getDataToPrintByKES = function () {
                 r('#PrintBoxKes div.modal-close')
                 // .remove();
                     .removeClass()
+                    .each(addBreakPage)
                     .addClass('breakRowPrint');
 
                 r('button.modal-close', el).click( deleteBoxPrintByKES );
@@ -54,7 +59,18 @@ const getDataToPrintByKES = function () {
             }
         });
     });
+    r('body').addClass('printBody');
     return false;
+};
+
+const addBreakPage = (i, el) => {
+
+    const hendler = jQuery('<div>Dodaj znak końca strony</a>');
+    hendler.click(({target})=>{
+       jQuery(target).toggleClass('breakPage'); return false;
+    });
+    jQuery(el).append(hendler);
+    return this;
 };
 
 const listPrintShopOrder = [];

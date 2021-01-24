@@ -22,9 +22,6 @@
 }
 @media print {
     body{ overflow:visible;  }
-    @page {
-        margin: 0.5cm !important;
-    }
     #PrintBoxKes{
         line-height: 1em;
         -webkit-column-count: 3; /* Chrome, Safari, Opera */
@@ -39,9 +36,6 @@
     }
     #PrintBoxKes .wc-backbone-modal {
         border: #000 dotted 1px;
-        /*max-width: calc(50% - 0.5cm);*/
-        /*min-height: calc(50% - 0.5cm);*/
-        /*margin: 0 !important;*/
     }
     #PrintBoxKes>div.wc-backbone-modal:nth-child(6n){
         border: red dotted medium;
@@ -61,32 +55,31 @@
     .order-status {
         line-height: unset;
     }
-    PrintBoxKes .wc-order-preview-table .wc-order-preview-table__column--tax,
-    #adminmenumain,
-    #wpcontent,
-    #wpfooter,
-    .breakRowPrint,
-    #PrintBoxKes button.modal-close.modal-close-link
-    {
-        display: none;
+    #PrintBoxKes .breakRowPrint div{
+        font-size: 0em;
+        line-height: 0em;
+        display: block;
+        clear: both;
     }
+    #PrintBoxKes .breakRowPrint div.breakPage{
+        page-break-after: always;
+    }
+    #PrintBoxKes .breakRowPrint div::after {
+        content: " ";
+        font-size: 0em;
+        line-height: 0em;
+        position: relative;
+        top: unset;
+    }
+}
 
-    @media print and (min-width: 8.5in) { /* horyzontalnie */
-
-        #PrintBoxKes>div.wc-backbone-modal.wc-order-preview,
-        #PrintBoxKes>div.wc-backbone-modal.wc-order-preview>.wc-backbone-modal-content {
-            /*min-height: 95vh;*/
-        }
-        .breakRowPrint:nth-child(3n){
-            display: block;
-            clear: both;
-            page-break-after: always;
-            padding-bottom: 1em;
-        }
-        /*#PrintBoxKes>div.wc-backbone-modal.wc-order-preview:nth-child(3n-2){clear:both}*/
-    }
-    @media print and (max-width: 8.5in) { /* Pionowo */
-    }
+.printBody #PrintBoxKes .wc-order-preview-table .wc-order-preview-table__column--tax,
+.printBody #adminmenumain,
+.printBody #wpcontent,
+.printBody #wpfooter,
+.printBody #PrintBoxKes button.modal-close.modal-close-link
+{
+    display: none;
 }
 @media screen {
     #PrintBoxKes
@@ -127,4 +120,25 @@
 #PrintBoxKes .wc-order-preview-table th:nth-child(3),
 #PrintBoxKes .wc-order-preview-table th:nth-child(4)  {
     width: 30px;
+}
+#PrintBoxKes .breakRowPrint div {
+    content: "Dodaj znak końca strony";
+    line-height: 1em;
+    height: 1em;
+}
+#PrintBoxKes .breakRowPrint div{
+    content: " ";
+    cursor: pointer;
+}
+#PrintBoxKes .breakRowPrint .breakPage::after {
+    content: "  \2356";
+    font-size: 2em;
+    line-height: 1em;
+    position: relative;
+    top: -0.5em;
+}
+.button.getDataToPrintByKES {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2em;
 }
