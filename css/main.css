@@ -1,0 +1,130 @@
+
+.wc-backbone-modal-main,
+#PrintBoxKes section,
+#PrintBoxKes header,
+#PrintBoxKes div,
+#PrintBoxKes td,
+#PrintBoxKes *
+{
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-top: 0;
+    margin-bottom: 1px;
+}
+#PrintBoxKes footer,
+#PrintBoxKes .wc-order-preview-table__column--tax,
+#PrintBoxKes .wc-order-preview-table__column--total
+{
+    display: none;
+}
+#PrintBoxKes .wc-order-preview-table__column--product {
+    text-align: center;
+}
+@media print {
+    body{ overflow:visible;  }
+    @page {
+        margin: 0.5cm !important;
+    }
+    #PrintBoxKes{
+        line-height: 1em;
+        -webkit-column-count: 3; /* Chrome, Safari, Opera */
+        -moz-column-count: 3; /* Firefox */
+        column-count: 3;
+        float: none !important; position: static !important; display: inline;
+        box-sizing: content-box !important;
+
+        width: 100%;
+        /*height: 100vh;*/
+        margin: 0 0 0 0;
+    }
+    #PrintBoxKes .wc-backbone-modal {
+        border: #000 dotted 1px;
+        /*max-width: calc(50% - 0.5cm);*/
+        /*min-height: calc(50% - 0.5cm);*/
+        /*margin: 0 !important;*/
+    }
+    #PrintBoxKes>div.wc-backbone-modal:nth-child(6n){
+        border: red dotted medium;
+    }
+    #PrintBoxKes>div.wc-backbone-modal:nth-child(3n+1){
+        border: green dotted 1px;
+        padding-bottom: 1em;
+    }
+
+    #PrintBoxKes header,
+    #PrintBoxKes .wc-order-preview .wc-order-preview-addresses .wc-order-preview-address h2,
+    #PrintBoxKes .wc-order-preview .wc-order-preview-addresses .wc-order-preview-note h2,
+    #PrintBoxKes .wc-backbone-modal-main header.wc-backbone-modal-header h1
+    {
+        font-size: 12px;
+    }
+    .order-status {
+        line-height: unset;
+    }
+    PrintBoxKes .wc-order-preview-table .wc-order-preview-table__column--tax,
+    #adminmenumain,
+    #wpcontent,
+    #wpfooter,
+    .breakRowPrint,
+    #PrintBoxKes button.modal-close.modal-close-link
+    {
+        display: none;
+    }
+
+    @media print and (min-width: 8.5in) { /* horyzontalnie */
+
+        #PrintBoxKes>div.wc-backbone-modal.wc-order-preview,
+        #PrintBoxKes>div.wc-backbone-modal.wc-order-preview>.wc-backbone-modal-content {
+            /*min-height: 95vh;*/
+        }
+        .breakRowPrint:nth-child(3n){
+            display: block;
+            clear: both;
+            page-break-after: always;
+            padding-bottom: 1em;
+        }
+        /*#PrintBoxKes>div.wc-backbone-modal.wc-order-preview:nth-child(3n-2){clear:both}*/
+    }
+    @media print and (max-width: 8.5in) { /* Pionowo */
+    }
+}
+@media screen {
+    #PrintBoxKes
+    {
+        /*display: flex;*/
+        /*flex-wrap: wrap;*/
+        justify-content: space-between;
+        margin: 0 5px 0 40px;
+    }
+}
+
+#PrintBoxKes>div {
+    margin: 2px;
+    padding: 5px;
+}
+#PrintBoxKes .wc-backbone-modal {
+    border: #000 dotted medium;
+}
+
+#PrintBoxKes article,
+#PrintBoxKes .wc-order-preview-table,
+#PrintBoxKes .wc-backbone-modal .wc-backbone-modal-content {
+    width: 100%;
+}
+#PrintBoxKes .wc-backbone-modal .wc-backbone-modal-content {
+    position: unset;
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none;
+}
+
+
+#PrintBoxKes .wc-backbone-modal {
+    width: 100%;
+    /*height: 49%;*/
+}
+#PrintBoxKes .wc-order-preview-table th:nth-child(2),
+#PrintBoxKes .wc-order-preview-table th:nth-child(3),
+#PrintBoxKes .wc-order-preview-table th:nth-child(4)  {
+    width: 30px;
+}
