@@ -1,4 +1,4 @@
-
+#wpbody #wpbody-content,
 .wc-backbone-modal-main,
 #PrintBoxKes section,
 #PrintBoxKes header,
@@ -10,8 +10,12 @@
     padding-bottom: 0 !important;
     margin-top: 0;
     margin-bottom: 1px;
+    min-height: auto;
 }
 #PrintBoxKes footer,
+#PrintBoxKes .breakRowPrint+.breakRowPrint,
+#PrintBoxKes>.breakRowPrint:last-child,
+.closePrintByKES.modal-close-link,
 #PrintBoxKes .wc-order-preview-table__column--tax,
 #PrintBoxKes .wc-order-preview-table__column--total
 {
@@ -21,7 +25,14 @@
     text-align: center;
 }
 @media print {
+    html.wp-toolbar { padding-top: 0px; }
     body{ overflow:visible;  }
+    .printBody .button.getDataToPrintByKES,
+    .printBody .closePrintByKES.modal-close-link,
+    .printBody #PrintBoxKes button.modal-close.modal-close-link
+    {
+        display: none !important;
+    }
     #PrintBoxKes{
         line-height: 1em;
         -webkit-column-count: 3; /* Chrome, Safari, Opera */
@@ -60,6 +71,7 @@
         line-height: 0em;
         display: block;
         clear: both;
+        width: 100%;
     }
     #PrintBoxKes .breakRowPrint div.breakPage{
         page-break-after: always;
@@ -72,12 +84,15 @@
         top: unset;
     }
 }
+#PrintBoxKes br{
+    display: contents;
+    content: " ";
+}
 
 .printBody #PrintBoxKes .wc-order-preview-table .wc-order-preview-table__column--tax,
 .printBody #adminmenumain,
 .printBody #wpcontent,
-.printBody #wpfooter,
-.printBody #PrintBoxKes button.modal-close.modal-close-link
+.printBody #wpfooter
 {
     display: none;
 }
@@ -87,7 +102,8 @@
         /*display: flex;*/
         /*flex-wrap: wrap;*/
         justify-content: space-between;
-        margin: 0 5px 0 40px;
+        margin: 0 auto 0 auto;
+        width: calc(100vw - 100px);
     }
 }
 
@@ -122,23 +138,50 @@
     width: 30px;
 }
 #PrintBoxKes .breakRowPrint div {
-    content: "Dodaj znak końca strony";
-    line-height: 1em;
-    height: 1em;
-}
-#PrintBoxKes .breakRowPrint div{
-    content: " ";
+    display: block;
     cursor: pointer;
+    text-align: center;
+}
+#PrintBoxKes .breakRowPrint div:not(.breakPage)::before {
+    content: " Dodaj ";
+}
+#PrintBoxKes .breakRowPrint .breakPage::before {
+    content: " Usuń ";
 }
 #PrintBoxKes .breakRowPrint .breakPage::after {
-    content: "  \2356";
+    display: block;
+    content: " ------------------- \2356 ---------------------";
     font-size: 2em;
-    line-height: 1em;
-    position: relative;
-    top: -0.5em;
+    white-space: pre-wrap;
 }
 .button.getDataToPrintByKES {
     width: 100%;
     text-align: center;
     margin-bottom: 2em;
+}
+.printBody .button.getDataToPrintByKES,
+.printBody .closePrintByKES.modal-close-link {
+    position: fixed;
+    top: 0px;
+    z-index: 999;
+}
+.printBody .closePrintByKES.modal-close-link {
+    display: block;
+    cursor: pointer;
+    color: #777;
+    height: 54px;
+    width: 54px;
+    padding: 0;
+    text-align: center;
+    background: #ddd;
+    border-radius: 4px;
+    border-bottom: 1px solid rgba(0,0,0,.05);
+    -webkit-transition: color .1s ease-in-out,background .1s ease-in-out;
+    transition: color .1s ease-in-out,background .1s ease-in-out;
+    z-index: 1000;
+}
+.printBody .closePrintByKES.modal-close-link:hover {
+    background-color: #c7ddef;
+    border-color: #ccc;
+    color: #000;
 }

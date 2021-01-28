@@ -27,6 +27,7 @@ const getDataToPrintByKES = function () {
 
 
     const r = jQuery;
+    r('body').addClass('printBody');
    if( r('#PrintBoxKes div').length > 0 ) {
        return  window.print();
    }
@@ -59,13 +60,13 @@ const getDataToPrintByKES = function () {
             }
         });
     });
-    r('body').addClass('printBody');
     return false;
 };
 
 const addBreakPage = (i, el) => {
 
-    const hendler = jQuery('<div>Dodaj znak końca strony</a>');
+    const hendler = jQuery('<div> znak końca strony </div>')
+        .addClass('button breakRowPrint');
     hendler.click(({target})=>{
        jQuery(target).toggleClass('breakPage'); return false;
     });
@@ -80,3 +81,8 @@ let timeIdKES = 0;
 jQuery('.button.getDataToPrintByKES')
     .removeClass('hidden')
     .click(getDataToPrintByKES);
+
+jQuery('.closePrintByKES.modal-close')
+    .click(()=>{
+        jQuery('body').removeClass('printBody'); return false;
+    });

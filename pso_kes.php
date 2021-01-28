@@ -5,7 +5,7 @@
     Author: Łukasz Martyn
     Version: 1.0.0
     */
-define( 'PSO_KES_VERSION', '1.0.0' );
+define( 'PSO_KES_VERSION', '1.0.1' );
 
     if ( ! defined( 'ABSPATH' ) ) {
         die( '-1' );
