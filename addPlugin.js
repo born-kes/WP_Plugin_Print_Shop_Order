@@ -5,8 +5,8 @@ $('a, button, input[type=submit]').click(()=>{
 
 const addPlugin = () => {
     const from__pso_kes_PHP = {
-        css: '/css/main.css',
-        js: '/js/main.js'
+        css: 'css/main.css',
+        js: 'js/main.js'
     };
     const css = $('<link rel="stylesheet" media="all" />')
         .attr('href', from__pso_kes_PHP.css );
