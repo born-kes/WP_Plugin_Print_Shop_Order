@@ -1,6 +1,6 @@
 {
   "name": "WP_Plugin_Print_Shop_Order",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Plugin Wordpress - Print Shop Order by production gastronomy",
   "repository":"https://github.com/born-kes/WP_Plugin_Print_Shop_Order.git",
   "scripts": {

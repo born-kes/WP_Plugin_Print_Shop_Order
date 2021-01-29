@@ -3,7 +3,7 @@
     Plugin Name: Print Shop Order by KES
     Description: Print Shop Order by production gastronomy
     Author: Łukasz Martyn
-    Version: 1.0.0
+    Version: 1.0.1
     */
 define( 'PSO_KES_VERSION', '1.0.1' );
 
